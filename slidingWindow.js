@@ -411,62 +411,62 @@
 // }
 
 
-function minWindow(s, t) {
-    let tObj = {};
-    let windowObj = {};
-    let leftBorder = 0;
-    let count = 0;
-
-    let minWindowLength = Infinity;
-
-    for (let i = 0; i < t.length; i++) {
-        if (tObj[t[i]] !== undefined) {
-            tObj[t[i]] += 1;
-        } else {
-            tObj[t[i]] = 1;
-        }
-    }
-
-    let requiredTypes = Object.keys(tObj).length;
-    let startIndex = 0;
-
-    for (let i = 0; i < s.length; i++) {
-        if (windowObj[s[i]] !== undefined) {
-            windowObj[s[i]] += 1;
-        } else {
-            windowObj[s[i]] = 1;
-        }
-
-        if (tObj[s[i]] !== undefined && windowObj[s[i]] === tObj[s[i]]) {
-            count++;
-        }
-
-        while (count === requiredTypes) {
-            let currentLength = i - leftBorder + 1;
-
-            if (currentLength < minWindowLength) {
-                minWindowLength = currentLength;
-                startIndex = leftBorder;
-            }
-
-            let leftChar = s[leftBorder];
-            windowObj[leftChar] -= 1;
-
-            if (tObj[leftChar] !== undefined && windowObj[leftChar] < tObj[leftChar]) {
-                count--;
-            }
-
-            leftBorder++;
-        }
-    }
-
-    if (minWindowLength === Infinity) {
-        return '';
-    }
-
-    return s.slice(startIndex, startIndex + minWindowLength);
-}
-
-console.log(minWindow("ADOBECODEBANC", "ABC"));
-console.log(minWindow("a", "a"));
-console.log(minWindow("a", "aa"));
+// function minWindow(s, t) {
+//     let tObj = {};
+//     let windowObj = {};
+//     let leftBorder = 0;
+//     let count = 0;
+//
+//     let minWindowLength = Infinity;
+//
+//     for (let i = 0; i < t.length; i++) {
+//         if (tObj[t[i]] !== undefined) {
+//             tObj[t[i]] += 1;
+//         } else {
+//             tObj[t[i]] = 1;
+//         }
+//     }
+//
+//     let requiredTypes = Object.keys(tObj).length;
+//     let startIndex = 0;
+//
+//     for (let i = 0; i < s.length; i++) {
+//         if (windowObj[s[i]] !== undefined) {
+//             windowObj[s[i]] += 1;
+//         } else {
+//             windowObj[s[i]] = 1;
+//         }
+//
+//         if (tObj[s[i]] !== undefined && windowObj[s[i]] === tObj[s[i]]) {
+//             count++;
+//         }
+//
+//         while (count === requiredTypes) {
+//             let currentLength = i - leftBorder + 1;
+//
+//             if (currentLength < minWindowLength) {
+//                 minWindowLength = currentLength;
+//                 startIndex = leftBorder;
+//             }
+//
+//             let leftChar = s[leftBorder];
+//             windowObj[leftChar] -= 1;
+//
+//             if (tObj[leftChar] !== undefined && windowObj[leftChar] < tObj[leftChar]) {
+//                 count--;
+//             }
+//
+//             leftBorder++;
+//         }
+//     }
+//
+//     if (minWindowLength === Infinity) {
+//         return '';
+//     }
+//
+//     return s.slice(startIndex, startIndex + minWindowLength);
+// }
+//
+// console.log(minWindow("ADOBECODEBANC", "ABC"));
+// console.log(minWindow("a", "a"));
+// console.log(minWindow("a", "aa"));

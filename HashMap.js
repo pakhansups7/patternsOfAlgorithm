@@ -521,3 +521,200 @@
 // console.log(longestConsecutive([0, 3, 7, 2, 5, 8, 4, 6, 0, 1]));
 
 
+// function longestConsecutiveSequence(nums) {
+//     let count = 0;
+//     let numbers = new Set(nums);
+//
+//     for (let i = 0; i < nums.length; i++) {
+//         if (!numbers.has(nums[i] - 1)) {
+//             let current = nums[i];
+//             let currentLength = 1;
+//             while (numbers.has(current + 1)) {
+//                 current++
+//                 currentLength++;
+//             }
+//             if (count < currentLength) {
+//                 count = currentLength;
+//             }
+//         }
+//     }
+//     return count;
+// }
+// //space time complexity: O(n*n) Если и повторений, и длина цепочки растут вместе с n, число шагов растёт как произведение этих величин
+// //space complexity: O(n) Сам результат занимает фиксированное место, но Set может хранить до n разных чисел.
+
+
+// function fourSumCount(A, B, C, D) {
+//     let count = 0;
+//     let obj = {};
+//
+//     for (let elementInA of A) {
+//         for (let elementInB of B) {
+//             let sum = elementInA + elementInB;
+//             if (obj[sum] !== undefined) {
+//                 obj[sum] += 1;
+//             } else {
+//                 obj[sum] = 1;
+//             }
+//         }
+//     }
+//
+//     for (let elementInC of C) {
+//         for (let elementInD of D) {
+//             let currentSum = (elementInC + elementInD) * (-1);
+//             if (obj[currentSum] !== undefined) {
+//                 count += obj[currentSum];
+//             }
+//         }
+//     }
+//     return count;
+// }
+
+
+// function equalPairSums(A, B, C, D) {
+//     let count = 0;
+//     let obj = {};
+//
+//     for (const elementInA of A) {
+//         for (const elementInB of B) {
+//             let sum = elementInA + elementInB;
+//             if (obj[sum] !== undefined) {
+//                 obj[sum] += 1;
+//             } else {
+//                 obj[sum] = 1;
+//             }
+//         }
+//     }
+//
+//     for (let elementInC of C) {
+//         for (let elementInD of D) {
+//             let currentSum = elementInC + elementInD;
+//             if (obj[currentSum] !== undefined) {
+//                 count += obj[currentSum];
+//             }
+//         }
+//     }
+//
+//     return count;
+// }
+
+
+// function sixSumCount(A, B, C, D, E, F) {
+//     let count = 0;
+//     let obj = {};
+//
+//     for (let elementInA of A) {
+//         for (let elementInB of B) {
+//             for (let elementInC of C) {
+//                 let sum = elementInA + elementInB + elementInC;
+//                 if (obj[sum] !== undefined) {
+//                     obj[sum] += 1;
+//                 } else {
+//                     obj[sum] = 1;
+//                 }
+//             }
+//         }
+//     }
+//
+//     for (let elementInD of D) {
+//         for (let elementInE of E) {
+//             for (let elementInF of F) {
+//                 let currentSum = (elementInD + elementInE + elementInF) * (-1);
+//                 if (obj[currentSum] !== undefined) {
+//                     count += obj[currentSum];
+//                 }
+//             }
+//         }
+//     }
+//     return count;
+// }
+
+
+// function hasZeroSumQuadruple(A, B, C, D) {
+//     let sum = new Set();
+//     for (const aElement of A) {
+//         for (const bElement of B) {
+//             sum.add(aElement + bElement);
+//         }
+//     }
+//     for (const cElement of C) {
+//         for (const dElement of D) {
+//             if (sum.has((cElement + dElement) *(-1))) {
+//                 return true;
+//             }
+//         }
+//     }
+//     return false;
+// }
+
+//neededPrefix = runningSum - k
+
+// function subarraySumEquals(nums, k) {
+//     let count = 0;
+//     let runningSum = 0;
+//     let obj = { 0: 1 };
+//
+//     for (const element of nums) {
+//         runningSum += element;
+//
+//         let neededPrefix = runningSum - k;
+//
+//         if (obj[neededPrefix] !== undefined) {
+//             count += obj[neededPrefix];
+//         }
+//
+//         if (obj[runningSum] !== undefined) {
+//             obj[runningSum] += 1;
+//         } else {
+//             obj[runningSum] = 1;
+//         }
+//     }
+//     return count;
+// }
+
+
+// function longestSubarraySumEqualsK(nums, k) {
+//     let obj = { 0: -1 };
+//     let runningSum = 0;
+//     let maxLength = 0;
+//
+//     for (let i = 0; i < nums.length; i++) {
+//         runningSum += nums[i];
+//
+//         let neededPrefix = runningSum - k;
+//
+//         if (obj[neededPrefix] !== undefined) {
+//             let currentLength = i - obj[neededPrefix];
+//             maxLength = Math.max(currentLength, maxLength);
+//         }
+//
+//         if (obj[runningSum] === undefined) {
+//             obj[runningSum] = i;
+//         }
+//     }
+//     return maxLength;
+// }
+
+
+// function countZeroSumSubarrays(nums) {
+//     let obj = { 0: 1 };
+//     let count = 0;
+//     let runningSum = 0;
+//
+//     for (let element of nums) {
+//         runningSum += element;
+//
+//         let neededSum = runningSum;
+//
+//         if (obj[neededSum] !== undefined) {
+//             count += obj[neededSum];
+//         }
+//
+//         if (obj[neededSum] !== undefined) {
+//             obj[neededSum] += 1;
+//         } else {
+//             obj[neededSum] = 1;
+//         }
+//     }
+//     return count;
+// }
