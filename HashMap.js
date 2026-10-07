@@ -718,3 +718,45 @@
 //     }
 //     return count;
 // }
+
+
+// function contiguousArray(nums) {
+//     let obj = {0: -1};
+//     let runningSum = 0;
+//     let maxLength = 0;
+//
+//     for (let i = 0; i < nums.length; i++) {
+//         runningSum += nums[i] === 0 ? -1 : 1;
+//
+//         if (obj[runningSum] !== undefined) {
+//             let currentLength = i - obj[runningSum];
+//             maxLength = Math.max(maxLength, currentLength);
+//         }
+//
+//         if (obj[runningSum] === undefined) {
+//             obj[runningSum] = i;
+//         }
+//     }
+//     return maxLength;
+// }
+
+
+function subarraySumsDivisibleByK(nums, k) {
+    let obj = {0: 1};
+    let runningSum = 0;
+    let count = 0;
+
+    for (let i = 0; i < nums.length; i++) {
+        runningSum += nums[i];
+
+        let remainder = ((runningSum % k) + k) % k;
+
+        if (obj[remainder] !== undefined) {
+            count += obj[remainder];
+            obj[remainder] += 1;
+        } else {
+            obj[remainder] = 1;
+        }
+    }
+    return count;
+}
