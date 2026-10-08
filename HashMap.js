@@ -741,22 +741,61 @@
 // }
 
 
-function subarraySumsDivisibleByK(nums, k) {
-    let obj = {0: 1};
-    let runningSum = 0;
-    let count = 0;
+// function subarraySumsDivisibleByK(nums, k) {
+//     let obj = {0: 1};
+//     let runningSum = 0;
+//     let count = 0;
+//
+//     for (let i = 0; i < nums.length; i++) {
+//         runningSum += nums[i];
+//
+//         let remainder = ((runningSum % k) + k) % k;
+//
+//         if (obj[remainder] !== undefined) {
+//             count += obj[remainder];
+//             obj[remainder] += 1;
+//         } else {
+//             obj[remainder] = 1;
+//         }
+//     }
+//     return count;
+// }
 
-    for (let i = 0; i < nums.length; i++) {
-        runningSum += nums[i];
 
-        let remainder = ((runningSum % k) + k) % k;
+// function continuousSubarraySum(nums, k) {
+//     let obj = {0: -1};
+//     let runningSum = 0;
+//
+//     for (let i = 0; i < nums.length; i++) {
+//         runningSum += nums[i];
+//         let remainder = ((runningSum % k) + k) % k;
+//         if (obj[remainder] !== undefined) {
+//             if ((i - obj[remainder]) >= 2) {
+//                 return true;
+//             }
+//         } else {
+//             obj[remainder] = i;
+//         }
+//     }
+//     return false;
+// }
 
-        if (obj[remainder] !== undefined) {
-            count += obj[remainder];
-            obj[remainder] += 1;
-        } else {
-            obj[remainder] = 1;
-        }
-    }
-    return count;
-}
+
+// function longestSubarraySumDivisibleByK(nums, k) {
+//     let obj = {0: -1};
+//     let runningSum = 0;
+//     let maxLength = 0;
+//
+//     for (let i = 0; i < nums.length; i++) {
+//         runningSum += nums[i];
+//         let remainder = ((runningSum % k) + k) % k;
+//         if (obj[remainder] !== undefined) {
+//             maxLength = Math.max(maxLength, (i - obj[remainder]));
+//         } else {
+//             obj[remainder] = i;
+//         }
+//     }
+//     return maxLength;
+// }
+
+
